@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Models.TimeTracking.TimeTrackingModel">
+    <Position X="5.75" Y="2.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="BminingBlazor.Services.ITimeTrackingService">
+    <Position X="9" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Services\ITimeTrackingService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

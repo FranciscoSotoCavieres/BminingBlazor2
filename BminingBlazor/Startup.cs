@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BminingBlazor.Services;
+using Data;
+using MatBlazor;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BminingBlazor.Services;
-using Data;
+using Models.TimeTracking;
 
 namespace BminingBlazor
 {
@@ -29,9 +25,20 @@ namespace BminingBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddTransient<IDataAccess,DataAccess>();
+            services.AddTransient<IDataAccess, DataAccess>();
             services.AddTransient<IUserDataService, UserDataService>();
             services.AddTransient<IProyectoDataService, ProyectoDataService>();
+            services.AddTransient<ITimeTrackingService, TimeTrackingService>();
+            services.AddSingleton<IDialogService, DialogService>();
+            services.AddMatToaster(config =>
+            {
+                config.Position = MatToastPosition.BottomRight;
+                config.PreventDuplicates = true;
+                config.NewestOnTop = true;
+                config.ShowCloseButton = true;
+                config.MaximumOpacity = 95;
+                config.VisibleStateDuration = 6000;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,8 +55,6 @@ namespace BminingBlazor
                 app.UseHsts();
             }
 
-            // TODO: Borrar este comentario
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -60,6 +65,8 @@ namespace BminingBlazor
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+
+            var hola = new TimeTrackingModel();
         }
     }
 }

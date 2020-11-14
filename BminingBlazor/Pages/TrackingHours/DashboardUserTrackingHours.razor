@@ -1,0 +1,17 @@
+﻿@page "/dashboard_tracking_hours/{userid:int}"
+
+<h3>@UserId</h3>
+
+@code {
+    [Parameter]
+    public int UserId { get; set; }
+
+    public DateTime MyCurrentDate { get; set; }
+
+ 
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+}
